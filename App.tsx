@@ -1,22 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import ApiKeySetting from './src/feature/ApiKeySetting';
+import AppBottomTabs from './src/feature/AppBottomTabs';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ApiKeySetting />
+    <NavigationContainer>
+      <AppBottomTabs />
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
