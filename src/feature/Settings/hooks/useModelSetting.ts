@@ -1,8 +1,8 @@
 import React from 'react';
 import useSWR from 'swr';
 
-import { createHeaders } from '../../../utils/api';
 import * as storage from '../../../utils/storage';
+import { getOpenAIApi } from '../../../api/openAI';
 
 function convertData(apiResponse: { data: { id: string }[] }) {
   return apiResponse.data
@@ -11,16 +11,8 @@ function convertData(apiResponse: { data: { id: string }[] }) {
 }
 
 async function fetcher(url: string) {
-  const apiKey = await storage.getApiKey();
-  const options = {
-    headers: await createHeaders(apiKey)
-  };
-  const response = await fetch(url, options);
-  console.log(`[API] models API response status: ${response.status}`);
-  if (response.status !== 200) {
-    throw new Error('fetch error');
-  }
-  return convertData(await response.json());
+  const response = await getOpenAIApi<{ data: { id: string }[] }>(url);
+  return convertData(response);
 }
 
 export const useModelSetting = () => {
@@ -36,7 +28,7 @@ export const useModelSetting = () => {
     });
   }, []);
   const { data, error } = useSWR<{ label: string; value: string }[]>(
-    'https://api.openai.com/v1/models',
+    '/v1/models',
     fetcher
   );
   return {
