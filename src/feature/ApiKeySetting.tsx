@@ -1,17 +1,16 @@
 import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 
+import { useApiKeyData } from './hooks/useApiKeyData';
+
 const ApiKeySetting: React.FC = () => {
-  const [apiKey, setApiKey] = React.useState('');
-  const onChangeText = (text: string) => {
-    setApiKey(text);
-  };
+  const { apiKey, onChange } = useApiKeyData();
   return (
     <TextInput
       style={styles.input}
       secureTextEntry={true}
       placeholder="API Key"
-      onChangeText={onChangeText}
+      onChangeText={onChange}
       value={apiKey}
     />
   );
