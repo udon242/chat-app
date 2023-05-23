@@ -7,7 +7,7 @@ import Settings from '../Settings';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
-const AppBottomTabs = () => {
+const AppBottomNavigation = () => {
   return (
     <Tab.Navigator initialRouteName={'Home'}>
       <Tab.Screen
@@ -20,4 +20,4 @@ const AppBottomTabs = () => {
   );
 };
 
-export default AppBottomTabs;
+export default AppBottomNavigation;
