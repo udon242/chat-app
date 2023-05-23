@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   row: {
-    width: 500,
+    width: 300,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     width: 60
   },
   form: {
-    width: 400
+    width: 260
   },
   input: {
     height: 50,
