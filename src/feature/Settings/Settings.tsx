@@ -1,28 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import { useApiKeyData } from './hooks/useApiKeyData';
 import { useModelSetting } from './hooks/useModelSetting';
 
 const Settings: React.FC = () => {
-  const { apiKey, onChange } = useApiKeyData();
   const { model, setModel, onModelChange, modelOptions } = useModelSetting();
   const [modelPickerOpen, setModelPickerOpen] = React.useState(false);
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        <Text style={styles.label}>API Key</Text>
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder="API Key"
-            onChangeText={onChange}
-            value={apiKey}
-          />
-        </View>
-      </View>
       <View style={styles.row}>
         <Text style={styles.label}>Model</Text>
         <View style={styles.form}>
